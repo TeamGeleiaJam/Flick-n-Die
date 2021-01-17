@@ -14,6 +14,7 @@ public class StatusEffectData : ScriptableObject
     [Tooltip("Over how many ticks damage is applied.")]
     [SerializeField] private int ticks = 0;
 
+    // Public accessors for the status effect variables 
     public int Ticks { get => ticks; }
     public float Duration { get => duration; }
     public List<EffectData> Effects { get => effects; }

@@ -24,6 +24,7 @@ public class ItemData : ScriptableObject
     [Tooltip("The description of the item.")]
     [SerializeField] private string itemDescription;
 
+    // Public accessors for the item data variables
     public List<EffectData> PeriodicEffects { get => periodicEffects; }
     public List<EffectData> FlickEffects { get => flickEffects; }
     public List<EffectData> HitEffects { get => hitEffects; }
