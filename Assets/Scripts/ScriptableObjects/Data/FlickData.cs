@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(filename = "Flick Data", menuname = "Flick Data", order = 0)]
+[CreateAssetMenu(filename = "Flick Data", menuname = "Entity/Flick Data", order = 0)]
 public class FlickData : ScriptableObject 
 {
     #region Field Declarations
