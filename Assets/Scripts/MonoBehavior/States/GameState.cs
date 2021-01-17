@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameState : BaseGameState
 {
-    private GameObject playerTop;
-    private GameObject playerBot;
+    private GameObject playerTop { get; set; }
+    private GameObject playerBot { get; set; }
     private GameObject[] spawnPoints;
     private GameObject[] objectPrefabs;
 
