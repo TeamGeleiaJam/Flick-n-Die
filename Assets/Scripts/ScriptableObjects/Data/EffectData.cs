@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Effect Data", menuName = "Effects/Effect Data", order = 0)]
+[CreateAssetMenu(fileName = "Effect", menuName = "Effects/Effect Data", order = 0)]
 public class EffectData : ScriptableObject 
 {
     #region Field Declarations
-    [Header("Effect Paremeters")]
+    [Header("Effect Parameters")]
     [Tooltip("The damage applied by the effect.")]
     [SerializeField] private float damage = 0;
     [Tooltip("The range in units of the area of effect.")]
