@@ -30,8 +30,6 @@
  
 <h3 align="center">Flick n' Die</h3>
   <p align="center">
-    <a href="https://www.codefactor.io/repository/github/ninito-ph/tank-wrecks"><img src="https://www.codefactor.io/repository/github/ninito-ph/tank-wrecks/badge?s=3c7b0b2a6c29b80d5ad232ead059891684dec177" alt="CodeFactor" /></a>
-    <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/ninito-ph/Tank-Wrecks">
     <img alt="GitHub tag (latest SemVer pre-release)" src="https://img.shields.io/github/v/release/TeamGeleiaJam/Flick-n-Die?include_prereleases&label=version">
     <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/TeamGeleiaJam/Flick-n-Die?label=project%20size">
     <br />
