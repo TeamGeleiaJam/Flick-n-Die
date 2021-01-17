@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Marks for cross-scene permanence
+        DontDestroyOnLoad(gameObject);
+
         // Enters the menu state immediately
         SwitchState(menuState);
     }
