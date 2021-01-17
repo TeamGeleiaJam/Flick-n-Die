@@ -99,13 +99,13 @@ The game is scheduled to be submitted january 21st, where the game will likely s
 <!-- CONTACT -->
 ## Contact
 
-Arthur Motta, vitinh.do.cs@gmail.com
-Eduardo Baumgratz, edubmarq01@gmail.com
-Daniel Brum, danielphillipebrum@hotmail.com
-Daniel Pettersen, pttlucena@gmail.com
-Denys Grossi, 1263939@sga.pucminas.br
-Luiz Bozzi, lfbozzi86@gmail.com
-Paulo Oliveira, paulo@ninito.me
+* Arthur Motta, vitinh.do.cs@gmail.com
+* Eduardo Baumgratz, edubmarq01@gmail.com
+* Daniel Brum, danielphillipebrum@hotmail.com
+* Daniel Pettersen, pttlucena@gmail.com
+* Denys Grossi, 1263939@sga.pucminas.br
+* Luiz Bozzi, lfbozzi86@gmail.com
+* Paulo Oliveira, paulo@ninito.me
 
 Project Link: [https://github.com/TeamGeleiaJam/Flick-n-Die](https://github.com/TeamGeleiaJam/Flick-n-Die)
 
