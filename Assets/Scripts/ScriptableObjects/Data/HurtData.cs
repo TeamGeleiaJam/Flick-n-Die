@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(filename = "Hurt Data", menuname = "Entity/Hurt Data", order = 0)]
+[CreateAssetMenu(fileName = "Hurt Data", menuName = "Entity/Hurt Data", order = 0)]
 public class HurtData : ScriptableObject  
 {
     #region Field Declarations
