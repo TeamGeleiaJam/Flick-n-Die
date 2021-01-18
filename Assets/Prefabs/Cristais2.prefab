@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &788271299461674499
+--- !u!1 &1657270309997154680
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5146248517215725188}
-  - component: {fileID: 4693059780913296822}
-  - component: {fileID: 5970587894754513706}
+  - component: {fileID: 7077278393884552347}
+  - component: {fileID: 793865650091852081}
+  - component: {fileID: 2247362862925400786}
   m_Layer: 0
-  m_Name: TrilhoCurvo
+  m_Name: Cristais2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5146248517215725188
+--- !u!4 &7077278393884552347
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788271299461674499}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1657270309997154680}
+  m_LocalRotation: {x: 0.009056673, y: 0.99732715, z: 0.06471034, w: -0.0326983}
+  m_LocalPosition: {x: -2.2919998, y: 0.71299934, z: 1.2109995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4693059780913296822
+  m_LocalEulerAnglesHint: {x: -7.45, y: 183.704, z: 0.799}
+--- !u!33 &793865650091852081
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788271299461674499}
-  m_Mesh: {fileID: 1014282790324699550, guid: 516f67c73cf4b3f45b3a13aba4467cca, type: 3}
---- !u!23 &5970587894754513706
+  m_GameObject: {fileID: 1657270309997154680}
+  m_Mesh: {fileID: 1106191748156447873, guid: 516f67c73cf4b3f45b3a13aba4467cca, type: 3}
+--- !u!23 &2247362862925400786
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788271299461674499}
+  m_GameObject: {fileID: 1657270309997154680}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
