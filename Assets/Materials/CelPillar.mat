@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cristais
+  m_Name: CelPillar
   m_Shader: {fileID: 4800000, guid: e65a8d7ddde867c4f9992ae3fc96c682, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: USE_VERTEX_COLOR
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -63,46 +63,37 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Blink: 5
+    - _Blink: 0
     - _Brightness: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DetailLevel: 0.177
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FresnelPower: 5
     - _GlossMapScale: 1
-    - _Glossiness: 0.69
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _LightCutoff: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineThickness: 1.5
+    - _OutlineThickness: 0
     - _Parallax: 0.02
     - _RimSize: 0
-    - _ShadowBands: 10
+    - _ShadowBands: 2
     - _ShadowedRim: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Strength: 0.5
+    - _Strength: 0.326
     - _UVSec: 0
-    - _VertexColor: 0
+    - _VertexColor: 1
     - _ZWrite: 1
     m_Colors:
-    - _BlinkColor: {r: 0.9607843, g: 0.8447648, b: 0.03137252, a: 1}
-    - _Color: {r: 0.25943398, g: 0.97824794, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0.0627451, b: 0.09411765, a: 1}
-    - _LightColor: {r: 1, g: 1, b: 1, a: 0}
-    - _MainColor: {r: 0.56078434, g: 1, b: 1, a: 0}
+    - _BlinkColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.9494706, b: 0.8537736, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShieldColor: {r: 1, g: 1, b: 1, a: 0}
-    - _SpecularColor: {r: 0.5424528, g: 0.8004974, b: 1, a: 1}
+    - _SpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
