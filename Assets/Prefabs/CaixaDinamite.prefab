@@ -821,8 +821,9 @@ GameObject:
   - component: {fileID: 5717973551868258668}
   - component: {fileID: 8716023506990573257}
   - component: {fileID: 6850395574251835907}
+  - component: {fileID: 3335053871431714330}
   m_Layer: 0
-  m_Name: CaixaDinamitePrefab
+  m_Name: CaixaDinamite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -911,6 +912,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3335053871431714330
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904844452413043670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3071744, y: 0.30717438, z: 0.30717438}
+  m_Center: {x: -5.716802e-10, y: 0.15345922, z: 2.858401e-10}
 --- !u!1 &5318087324486950095
 GameObject:
   m_ObjectHideFlags: 0
