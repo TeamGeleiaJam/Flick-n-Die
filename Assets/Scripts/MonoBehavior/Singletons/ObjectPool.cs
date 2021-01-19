@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : IPoolable
+public class ObjectPool 
 {
 	#region Field Declarations
 	[Header("Object Pool Parameters")]
@@ -25,7 +25,9 @@ public class ObjectPool : IPoolable
     	GameObject returnedObject = inactiveObjects[returnedObjectIndex];
     	inactiveObjects.RemoveAt(returnedObjectIndex);
     	activeObjects.Add(returnedObject);
+    	ItemBase returnedObjectScript = returnedObject.GetComponent<ItemBase>();
     	
+    	returnedObjectScript.EnablePoolable();
     	returnedObject.SetActive(true);
     	returnedObject.position = position;
     	returnedObject.rotation = rotation;
@@ -54,10 +56,14 @@ public class ObjectPool : IPoolable
     #region Coroutines
     private IEnumerator cleanupRoutine() 
     {
-    	yield return new WaitForSeconds(cleanupTime);
-    	while (inactiveObjects > maxObjectCount) 
+    	WaitForSeconds cleanupTimer = new WaitForSeconds(cleanupTime);
+    	while (true) 
     	{
-    		inactiveObjects.RemoveAt(inactiveObjects.Count);
+    		if(inactiveObjects.Count > maxObjectCount) 
+    		{
+    			inactiveObjects.RemoveAt(inactiveObjects.Count - 1);
+    		}
+    		yield return cleanupTimer;
     	}
     }
     #endregion
