@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IPoolable 
 {
     #region Custom Methods
-    void EnablePoolable();
-    void Pool();
+    public void EnablePoolable();
+    public void Pool();
     #endregion
 }
