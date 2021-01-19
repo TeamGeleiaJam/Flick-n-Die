@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StatusEffectController : MonoBehaviour
 {
+    [SerializeField]
+    private List<StatusEffectData> statusEffects;
+
     // Start is called before the first frame update
     void Start()
     {
