@@ -25,7 +25,7 @@ public class ObjectPool
     	GameObject returnedObject = inactiveObjects[returnedObjectIndex];
     	inactiveObjects.RemoveAt(returnedObjectIndex);
     	activeObjects.Add(returnedObject);
-    	ItemBase returnedObjectScript = returnedObject.GetComponent<ItemBase>();
+    	ItemBase returnedObjectScript = returnedObject.GetComponent<IPoolable>();
     	
     	returnedObjectScript.EnablePoolable();
     	returnedObject.SetActive(true);
