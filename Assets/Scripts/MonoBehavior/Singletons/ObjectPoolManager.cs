@@ -5,9 +5,9 @@ using UnityEngine;
 public class ObjectPoolManager : SingletonBase<ObjectPoolManager> 
 {
     #region Field Declarations
-    private List<ObjectPool> objectPools = new List<ObjectPool>();
+    private Dictionary<EItemType, ObjectPool> objectPools = new Dictionary<EItemType, ObjectPool>();
     
-    public List<ObjectPool> ObjectPools {get => objectPools; set => objectPools = value;}
+    public Dictionary<EItemType, ObjectPool> ObjectPools {get => objectPools; set => objectPools = value;}
     #endregion
     
     #region Unity Methods
@@ -18,14 +18,14 @@ public class ObjectPoolManager : SingletonBase<ObjectPoolManager>
     #endregion
     
     #region Custom Methods
-    public void CreatePool(ObjectPool objectPool) 
+    public void CreatePool(EItemType itemType, ObjectPool objectPool) 
     {
-        objectPools.Add(objectPool);
+        objectPools.Add(itemType, objectPool);
     }
     
-    public void RequestObjectFromPool() 
+    public void RequestObjectFromPool(EItemType itemType, Vector3 position, Quaternion rotation) 
     {
-    	// need help
+    	objectPools[itemType].RequestObject(position, rotation);
     }
     #endregion
 }

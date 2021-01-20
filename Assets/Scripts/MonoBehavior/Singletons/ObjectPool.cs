@@ -25,9 +25,9 @@ public class ObjectPool
     	GameObject returnedObject = inactiveObjects[returnedObjectIndex];
     	inactiveObjects.RemoveAt(returnedObjectIndex);
     	activeObjects.Add(returnedObject);
-    	ItemBase returnedObjectScript = returnedObject.GetComponent<IPoolable>();
+    	IPoolable returnedObjectInterface = returnedObject.GetComponent<IPoolable>();
     	
-    	returnedObjectScript.EnablePoolable();
+    	returnedObjectInterface.EnablePoolable();
     	returnedObject.SetActive(true);
     	returnedObject.position = position;
     	returnedObject.rotation = rotation;
@@ -48,8 +48,17 @@ public class ObjectPool
     public void AddObjectToPool() 
     {
     	GameObject instantiatedObject = Instantiate(inactiveObjects[0]);
+    	IPoolable instantiatedObjectInterface = instantiatedObject.GetComponent<IPoolable>();
+    	
+    	instantiatedObjectInterface.ObjectPool = this;
     	instantiatedObject.SetActive(false);
     	inactiveObjects.Add(instantiatedObject);
+    }
+    public void ReturnObjectToPool(GameObject gameObject) 
+    {
+        gameObject.SetActive(false);
+        activeObjects.Remove(gameObject);
+        inactiveObjects.Add(gameObject);
     }
     #endregion
     
