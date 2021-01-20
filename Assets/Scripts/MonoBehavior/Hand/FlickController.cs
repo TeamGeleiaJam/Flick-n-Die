@@ -39,7 +39,10 @@ public class FlickController : MonoBehaviour
         Rigidbody itemRb = item.GetComponent<Rigidbody>();
         itemRb.isKinematic = false;
         itemRb.AddForce(flickDirection, ForceMode.Impulse);
+        item.GetComponent<Rigidbody>().AddForce(flickDirection, ForceMode.Impulse);
+
         playerHand.FlickController.CurrentFlickForce = 0f;
+
         item.GetComponent<ItemBase>().OnFlick();
     }
 }
