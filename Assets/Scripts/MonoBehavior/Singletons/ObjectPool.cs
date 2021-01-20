@@ -47,7 +47,7 @@ public class ObjectPool
     }
     public void AddObjectToPool() 
     {
-    	GameObject instantiatedObject = GameObject.Instantiate(inactiveObjects[0]);
+    	GameObject instantiatedObject = ObjectPoolManager.Instantiate(inactiveObjects[0]);
     	IPoolable instantiatedObjectInterface = instantiatedObject.GetComponent<IPoolable>();
     	
     	instantiatedObjectInterface.ObjectPool = this;

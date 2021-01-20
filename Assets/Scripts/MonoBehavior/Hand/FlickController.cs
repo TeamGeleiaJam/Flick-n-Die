@@ -31,8 +31,11 @@ public class FlickController : MonoBehaviour
     public void Flick(GameObject item)
     {
         Vector3 flickDirection = (Vector3.Normalize(item.transform.position - transform.position)) * (10f * playerHand.FlickController.CurrentFlickForce);
+        
         item.GetComponent<Rigidbody>().AddForce(flickDirection, ForceMode.Impulse);
+
         playerHand.FlickController.CurrentFlickForce = 0f;
+
         item.GetComponent<ItemBase>().OnFlick();
     }
 }

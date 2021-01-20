@@ -26,19 +26,22 @@ public class ItemBase : MonoBehaviour, IPoolable
     	
     }
     #endregion
-    
+
     #region Custom Methods
+
     public void OnHit() 
     {
-    	
+
     }
+    
     public void OnActivate() 
     {
-    	
+
     }
+    
     public void OnHitTarget(HurtController hurtController, StatusEffectController statusEffectController) 
     {
-    	
+
     }
     public void OnFlick()
     {
