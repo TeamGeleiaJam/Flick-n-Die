@@ -23,47 +23,34 @@ public class MotorController : MonoBehaviour
     private string[] controlLayout; //0 - Horizontal Axis, 1 - Vertical Axis, 2 - Flick
 
 
-    // Start is called before the first frame update
     void Start()
     {
         canMove = true;
         rb = transform.GetComponent<Rigidbody>();
 
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-
         Move(Input.GetAxis(controlLayout[0]), Input.GetAxis(controlLayout[1]));
         Turn();
         TriggerFlick(controlLayout[2]);
+
     }
 
     public void Move(float horAxis, float verAxis)
     {
-        
         if (canMove)
         {
             transform.Translate(horAxis * speedData.Speed * Time.deltaTime, 0, verAxis * speedData.Speed * Time.deltaTime);
         }
-        
 
-        
-        
     }
 
     private IEnumerator Turn()
     {
-        
         float nearestDistance = 1000f;
         Collider[] objectsNear = Physics.OverlapSphere(transform.position, 4f, flickableItemLayer, QueryTriggerInteraction.Ignore);
-
-
-        
-
 
         if (objectsNear.Length >= 1)
         {
@@ -85,7 +72,6 @@ public class MotorController : MonoBehaviour
             transform.GetChild(0).transform.rotation = Quaternion.Lerp(transform.GetChild(0).transform.rotation, Quaternion.LookRotation(defaultPosition, Vector3.up), 5f * Time.deltaTime);
         }
         yield return new WaitForSeconds(0.2f);
-        
     }
 
     public void TriggerFlick(string flickInput)
@@ -96,25 +82,12 @@ public class MotorController : MonoBehaviour
 
             if (Input.GetButton(flickInput))
             {
-                if(playerHand.FlickController.CurrentFlickForce < playerHand.FlickController.FlickData.MaxFlickForce)
-                {
-                    playerHand.FlickController.CurrentFlickForce += playerHand.FlickController.FlickData.ForceIncreaseSpeed * Time.deltaTime;
-                }
-                else
-                {
-                    playerHand.FlickController.CurrentFlickForce = playerHand.FlickController.FlickData.MaxFlickForce;
-                }
+                playerHand.FlickController.ChargeFlick();
             }
             else if (Input.GetButtonUp(flickInput))
             {
-                Vector3 flickDirection = (Vector3.Normalize(nearestItem.transform.position - transform.position)) * (10f * playerHand.FlickController.CurrentFlickForce);
-                nearestItem.GetComponent<Rigidbody>().AddForce(flickDirection, ForceMode.Impulse);
-                playerHand.FlickController.CurrentFlickForce = 0f;
-                nearestItem.GetComponent<ItemBase>.OnFlick();
-                nearestItem = null;
+                playerHand.FlickController.Flick(nearestItem);
             }
-            
         }
-        
     }
 }

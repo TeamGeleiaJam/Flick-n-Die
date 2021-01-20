@@ -19,9 +19,6 @@ public class PlayerHand : MonoBehaviour
     public FlickController FlickController { get => flickController; set => flickController = value; }
 
     
-    
-
-    // Start is called before the first frame update
     void Start()
     {
         statusEffectController = transform.GetComponent<StatusEffectController>();
@@ -29,17 +26,8 @@ public class PlayerHand : MonoBehaviour
         motorController = transform.GetComponent<MotorController>();
         flickController = transform.GetComponent<FlickController>();
 
-
         motorController.PlayerHand = this;
         hurtController.PlayerHand = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
-        
-
+        flickController.PlayerHand = this;
     }
 }
