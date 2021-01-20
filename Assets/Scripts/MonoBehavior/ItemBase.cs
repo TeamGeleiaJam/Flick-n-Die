@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemBase : MonoBehaviour, IPoolable 
 {
 	#region Field Declarations
+	[SerializeField] private EItemType itemType;
     [SerializeField] private EffectController effectController;
     [SerializeField] private ItemData itemData;
     [SerializeField] private float lifetime;
@@ -16,11 +17,26 @@ public class ItemBase : MonoBehaviour, IPoolable
     #region Interface Implementations
     public void EnablePoolable() 
     {
-    	// need help
+    	
     }
     public void Pool()
     {
-    	// need help
+    	
+    }
+    #endregion
+    
+    #region Custom Methods
+    public void OnHit() 
+    {
+    	
+    }
+    public void OnActivate() 
+    {
+    	
+    }
+    public void OnHitTarget(HurtController hurtController, StatusEffectController statusEffectController) 
+    {
+    	
     }
     #endregion
     
@@ -28,7 +44,16 @@ public class ItemBase : MonoBehaviour, IPoolable
     private IEnumerator LifetimeRoutine() 
     {
     	yield return new WaitForSeconds(lifetime);
-    	this.Pool();
+    	Pool();
+    	if (ObjectPoolManager.objectPools.ContainsKey(itemType)) 
+    	{
+            ObjectPool newItemPool = new ObjectPool();
+            ObjectPoolManager.CreatePool(itemType, newItemPool);
+    	}
+    	else 
+    	{
+    		ObjectPoolManager.objectPools[itemType].ReturnObjectToPool(this.gameObject);
+    	}
     }
     #endregion
 }
