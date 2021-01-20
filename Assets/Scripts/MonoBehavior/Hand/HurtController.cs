@@ -6,11 +6,11 @@ public class HurtController : MonoBehaviour
 {
 
     [SerializeField]
-    private float currentHurt;
+    private float currentHurt = 0;
     public float CurrentHurt { get => currentHurt; set => currentHurt = value; }
     private Rigidbody rb;
-    private MotorController motorController;
-    public MotorController MotorController { set => motorController = value; }
+    private PlayerHand playerHand;
+    public PlayerHand PlayerHand { get => playerHand; set => playerHand = value; }
 
     [SerializeField]
     private HurtData hurtData;
@@ -20,31 +20,22 @@ public class HurtController : MonoBehaviour
         rb = transform.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void OnHurt(float damage, Transform hitterPosition)
     {
         Vector3 flyDirection = Vector3.Normalize(transform.position - hitterPosition.position) * ((currentHurt / 10) + 20);
         rb.AddForce(flyDirection, ForceMode.Impulse);
         
-        motorController.CanMove = false;
-        if(currentHurt < 300)
-        {
-            currentHurt += damage;
-        }
-        else
-        {
-            currentHurt = 300f;
-        }
-        motorController.CanMove = false;
+        playerHand.MotorController.CanMove = false;
+        
+        currentHurt += damage;
+        
+        
         Invoke("HurtEnd", 1.5f);
     }
     private void HurtEnd()
     {
         rb.velocity = Vector3.zero;
-        motorController.CanMove = true;
+        playerHand.MotorController.CanMove = true;
     }
 }

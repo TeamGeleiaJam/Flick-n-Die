@@ -12,12 +12,14 @@ public class PlayerHand : MonoBehaviour
     public HurtController HurtController { get => hurtController; set => hurtController = value; }
 
 
-    private MotorController motorController;
+    private MotorController motorController ;
+    public MotorController MotorController { get => motorController; set => motorController = value; }
    
     private FlickController flickController;
+    public FlickController FlickController { get => flickController; set => flickController = value; }
 
-    [SerializeField]
-    private string[] controlLayout; //0 - Horizontal Axis, 1 - Vertical Axis, 2 - Flick
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +28,16 @@ public class PlayerHand : MonoBehaviour
         hurtController = transform.GetComponent<HurtController>();
         motorController = transform.GetComponent<MotorController>();
         flickController = transform.GetComponent<FlickController>();
-        
-        motorController.FlickController = flickController;
-        hurtController.MotorController = motorController;
+
+
+        motorController.PlayerHand = this;
+        hurtController.PlayerHand = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        motorController.Move(Input.GetAxis(controlLayout[0]), Input.GetAxis(controlLayout[1]));
-        motorController.Turn();
-        motorController.TriggerFlip(controlLayout[2]);
+        
         
         
 

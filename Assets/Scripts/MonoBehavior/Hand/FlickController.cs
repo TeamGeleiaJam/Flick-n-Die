@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlickController : MonoBehaviour
 {
     [SerializeField]
-    private float currentFlickForce;
+    private float currentFlickForce = 0;
     public float CurrentFlickForce { get => currentFlickForce; set => currentFlickForce = value; }
 
     [SerializeField]

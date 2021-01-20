@@ -13,17 +13,14 @@ public class MotorController : MonoBehaviour
     private LayerMask flickableItemLayer;
     [SerializeField]
     private Vector3 defaultPosition;
-    private FlickController flickController;
-    public FlickController FlickController { set => flickController = value; }
+    private PlayerHand playerHand;
+    public PlayerHand PlayerHand { get => playerHand; set => playerHand = value; } 
     [SerializeField]
     private bool canMove;
-    public bool CanMove { set => canMove = value; }
+    public bool CanMove { get => canMove; set => canMove = value; }
     private Rigidbody rb;
-    
-    
-    
-    
-
+    [SerializeField]
+    private string[] controlLayout; //0 - Horizontal Axis, 1 - Vertical Axis, 2 - Flick
 
 
     // Start is called before the first frame update
@@ -38,9 +35,11 @@ public class MotorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-        
+
+
+        Move(Input.GetAxis(controlLayout[0]), Input.GetAxis(controlLayout[1]));
+        Turn();
+        TriggerFlick(controlLayout[2]);
     }
 
     public void Move(float horAxis, float verAxis)
@@ -56,8 +55,9 @@ public class MotorController : MonoBehaviour
         
     }
 
-    public void Turn()
+    private IEnumerator Turn()
     {
+        
         float nearestDistance = 1000f;
         Collider[] objectsNear = Physics.OverlapSphere(transform.position, 4f, flickableItemLayer, QueryTriggerInteraction.Ignore);
 
@@ -71,9 +71,9 @@ public class MotorController : MonoBehaviour
             
             for (int i = 0; i < objectsNear.Length; i++)
             {
-                if(Vector3.Distance(transform.position, objectsNear[i].transform.position) < nearestDistance)
+                if((transform.position - objectsNear[i].transform.position).sqrMagnitude < nearestDistance)
                 {
-                    nearestDistance = Vector3.Distance(transform.position, objectsNear[i].transform.position);
+                    nearestDistance = (transform.position - objectsNear[i].transform.position).sqrMagnitude;
                     nearestItem = objectsNear[i].gameObject;
                 }
             }
@@ -84,31 +84,32 @@ public class MotorController : MonoBehaviour
         {
             transform.GetChild(0).transform.rotation = Quaternion.Lerp(transform.GetChild(0).transform.rotation, Quaternion.LookRotation(defaultPosition, Vector3.up), 5f * Time.deltaTime);
         }
+        yield return new WaitForSeconds(0.2f);
         
     }
 
-    public void TriggerFlip(string flickInput)
+    public void TriggerFlick(string flickInput)
     {
         
-        if( nearestItem != null && Vector3.Distance(nearestItem.transform.position, transform.position) < 3f)
+        if( nearestItem != null && (nearestItem.transform.position - transform.position).sqrMagnitude < 9f)
         {
 
             if (Input.GetButton(flickInput))
             {
-                if(flickController.CurrentFlickForce < flickController.FlickData.MaxFlickForce)
+                if(playerHand.FlickController.CurrentFlickForce < playerHand.FlickController.FlickData.MaxFlickForce)
                 {
-                    flickController.CurrentFlickForce += flickController.FlickData.ForceIncreaseSpeed * Time.deltaTime;
+                    playerHand.FlickController.CurrentFlickForce += playerHand.FlickController.FlickData.ForceIncreaseSpeed * Time.deltaTime;
                 }
                 else
                 {
-                    flickController.CurrentFlickForce = flickController.FlickData.MaxFlickForce;
+                    playerHand.FlickController.CurrentFlickForce = playerHand.FlickController.FlickData.MaxFlickForce;
                 }
             }
             else if (Input.GetButtonUp(flickInput))
             {
-                Vector3 flickDirection = (Vector3.Normalize(nearestItem.transform.position - transform.position)) * (10f * flickController.CurrentFlickForce);
+                Vector3 flickDirection = (Vector3.Normalize(nearestItem.transform.position - transform.position)) * (10f * playerHand.FlickController.CurrentFlickForce);
                 nearestItem.GetComponent<Rigidbody>().AddForce(flickDirection, ForceMode.Impulse);
-                flickController.CurrentFlickForce = 0f;
+                playerHand.FlickController.CurrentFlickForce = 0f;
                 nearestItem.GetComponent<ItemBase>.OnFlick();
                 nearestItem = null;
             }
