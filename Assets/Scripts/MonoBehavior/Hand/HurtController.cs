@@ -13,9 +13,12 @@ public class HurtController : MonoBehaviour
     private Rigidbody rb;
     private PlayerHand playerHand;
     public PlayerHand PlayerHand { get => playerHand; set => playerHand = value; }
+    public float DamageModifier { get => damageModifier; set => damageModifier = value; }
 
     [SerializeField]
     private HurtData hurtData;
+    private float damageModifier = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +26,13 @@ public class HurtController : MonoBehaviour
         rb = transform.GetComponent<Rigidbody>();
     }
 
+    public void Hurt(float damageAmount, Transform hitterPosition)
+    {
+        currentHurt = currentHurt + (damageAmount * damageModifier);
+        OnHurt(damageAmount, hitterPosition);
+    }
     
-    public void OnHurt(float damage, Transform hitterPosition)
+    private void OnHurt(float damage, Transform hitterPosition)
     {
         soundSource.clip = hurtSound;
         soundSource.Play();
