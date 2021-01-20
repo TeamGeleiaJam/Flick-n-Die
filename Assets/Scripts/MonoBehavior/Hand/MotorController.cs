@@ -27,13 +27,12 @@ public class MotorController : MonoBehaviour
     {
         canMove = true;
         rb = transform.GetComponent<Rigidbody>();
-
+        StartCoroutine(Turn());
     }
 
     void Update()
     {
         Move(Input.GetAxis(controlLayout[0]), Input.GetAxis(controlLayout[1]));
-        Turn();
         TriggerFlick(controlLayout[2]);
 
     }
