@@ -16,6 +16,7 @@ public class EffectData : ScriptableObject
     [Tooltip("The intensity multiplier of an effect.")]
     [SerializeField] [Range(0, 1)] private float intensity = 0;
 
+    // Getters for public access of the effect variables
     public float Damage { get => damage;}
     public float AreaOfEffect { get => areaOfEffect; }
     public float Delay { get => delay; }
