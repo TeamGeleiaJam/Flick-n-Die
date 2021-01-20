@@ -6,6 +6,7 @@ public class FlickController : MonoBehaviour
 {
     [SerializeField]
     private float currentFlickForce = 0;
+    private float flickForceModifier = 1;
     public float CurrentFlickForce { get => currentFlickForce; set => currentFlickForce = value; }
 
     private PlayerHand playerHand;
@@ -15,6 +16,7 @@ public class FlickController : MonoBehaviour
     [SerializeField]
     private FlickData flickData;
     public FlickData FlickData { get => flickData; set => flickData = value; }
+    public float FlickForceModifier { get => flickForceModifier; set => flickForceModifier = value; }
 
     public void ChargeFlick()
     {

@@ -18,9 +18,12 @@ public class MotorController : MonoBehaviour
     [SerializeField]
     private bool canMove;
     public bool CanMove { get => canMove; set => canMove = value; }
+    public float SpeedModifier { get => speedModifier; set => speedModifier = value; }
+
     private Rigidbody rb;
     [SerializeField]
     private string[] controlLayout; //0 - Horizontal Axis, 1 - Vertical Axis, 2 - Flick
+    private float speedModifier = 1;
 
 
     void Start()
@@ -41,7 +44,7 @@ public class MotorController : MonoBehaviour
     {
         if (canMove)
         {
-            rb.velocity = new Vector3(horAxis * speedData.Speed, 0, verAxis * speedData.Speed);
+            rb.velocity = new Vector3(horAxis * speedData.Speed * speedModifier, 0, verAxis * speedData.Speed * speedModifier);
         }
         else
         {
