@@ -2,21 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseGameState
+public abstract class BaseGameState
 {
+    public abstract void EnterState(GameManager gameManager);
 
-    public void EnterState()
-    {
-        
-    }
+    public abstract void Update(GameManager gameManager);
 
-    public void Update()
-    {
-        
-    }
-
-    public void LeaveState()
-    {
-
-    }
+    public abstract void LeaveState(GameManager gameManager);
 }

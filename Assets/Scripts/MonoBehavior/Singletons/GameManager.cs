@@ -8,9 +8,18 @@ public class GameManager : MonoBehaviour
 {
     #region Field Declarations
 
+    // State declarations
     private MenuState menuState = new MenuState();
     private GameState gameState = new GameState();
     private BaseGameState currentState;
+
+    // Game data
+    [Header("Game Values")]
+    [Tooltip("The spawnpool of items for the game.")]
+    [SerializeField] private SpawnpoolData spawnpool;
+
+    // Public accessors
+    public SpawnpoolData Spawnpool { get => spawnpool; }
 
     #endregion
 
@@ -24,6 +33,8 @@ public class GameManager : MonoBehaviour
 
         // Enters the menu state immediately
         SwitchState(menuState);
+
+        EventBroker.GameOver += LoadScene;
     }
 
     // Update is called once per frame
@@ -31,6 +42,11 @@ public class GameManager : MonoBehaviour
     {
         // Runs the current state's update function
         currentState.Update(this);
+    }
+
+    private void OnDestroy()
+    {
+        EventBroker.GameOver -= LoadScene;
     }
 
     #endregion

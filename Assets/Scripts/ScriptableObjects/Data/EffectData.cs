@@ -13,6 +13,7 @@ public class EffectData : ScriptableObject
     [SerializeField] private float areaOfEffect = 0;
     [Tooltip("The delay before triggering the effect.")]
     [SerializeField] private float delay = 0;
+    [Space]
     [Tooltip("The intensity multiplier of an effect.")]
     [SerializeField] [Range(0, 1)] private float intensity = 0;
 

@@ -61,3 +61,7 @@ sysinfo.txt
 crashlytics-build.properties
 
 Packages/packages-lock.json
+
+Assets/ConsolePro/
+
+Assets/ConsolePro.meta
