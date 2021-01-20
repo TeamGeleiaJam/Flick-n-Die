@@ -40,6 +40,10 @@ public class ItemBase : MonoBehaviour, IPoolable
     {
     	
     }
+    public void OnFlick()
+    {
+
+    }
     #endregion
     
     #region Coroutines

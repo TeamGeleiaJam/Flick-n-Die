@@ -29,8 +29,8 @@ public class ObjectPool
     	
     	returnedObjectInterface.EnablePoolable();
     	returnedObject.SetActive(true);
-    	returnedObject.position = position;
-    	returnedObject.rotation = rotation;
+    	returnedObject.transform.position = position;
+    	returnedObject.transform.rotation = rotation;
     	
     	return returnedObject;
     }
@@ -47,7 +47,7 @@ public class ObjectPool
     }
     public void AddObjectToPool() 
     {
-    	GameObject instantiatedObject = Instantiate(inactiveObjects[0]);
+    	GameObject instantiatedObject = GameObject.Instantiate(inactiveObjects[0]);
     	IPoolable instantiatedObjectInterface = instantiatedObject.GetComponent<IPoolable>();
     	
     	instantiatedObjectInterface.ObjectPool = this;
