@@ -9,12 +9,14 @@ public class ItemBase : MonoBehaviour, IPoolable
     [SerializeField] private EffectController effectController;
     [SerializeField] private ItemData itemData;
     [SerializeField] private float lifetime;
+    private ObjectPool objectPool;
     
     public EffectController EffectController {get => effectController;}
     public ItemData ItemData {get => itemData;}
     #endregion
     
     #region Interface Implementations
+    public ObjectPool {get => objectPool; set => objectPool = value;}
     public void EnablePoolable() 
     {
     	
