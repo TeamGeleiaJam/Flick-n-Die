@@ -47,14 +47,14 @@ public class ItemBase : MonoBehaviour, IPoolable
     {
     	yield return new WaitForSeconds(lifetime);
     	Pool();
-    	if (ObjectPoolManager.objectPools.ContainsKey(itemType)) 
+    	if (ObjectPoolManager.Instance.ObjectPools.ContainsKey(itemType)) 
     	{
             ObjectPool newItemPool = new ObjectPool();
-            ObjectPoolManager.CreatePool(itemType, newItemPool);
+            ObjectPoolManager.Instance.CreatePool(itemType, newItemPool);
     	}
     	else 
     	{
-    		ObjectPoolManager.objectPools[itemType].ReturnObjectToPool(this.gameObject);
+    		ObjectPoolManager.Instance.ObjectPools[itemType].ReturnObjectToPool(this.gameObject);
     	}
     }
     #endregion
