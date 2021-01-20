@@ -87,6 +87,7 @@ public class MotorController : MonoBehaviour
             else if (Input.GetButtonUp(flickInput))
             {
                 playerHand.FlickController.Flick(nearestItem);
+                nearestItem = null;
             }
         }
     }

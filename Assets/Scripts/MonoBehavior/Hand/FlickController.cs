@@ -34,6 +34,5 @@ public class FlickController : MonoBehaviour
         item.GetComponent<Rigidbody>().AddForce(flickDirection, ForceMode.Impulse);
         playerHand.FlickController.CurrentFlickForce = 0f;
         item.GetComponent<ItemBase>().OnFlick();
-        item = null;
     }
 }
