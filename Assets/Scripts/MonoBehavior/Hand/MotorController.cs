@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MotorController : MonoBehaviour
 {
+    private AudioSource soundSource;
+    [SerializeField] private AudioClip flickSound;
     [SerializeField]
     private SpeedData speedData;
     private GameObject nearestItem;
@@ -26,6 +28,7 @@ public class MotorController : MonoBehaviour
     void Start()
     {
         canMove = true;
+        soundSource = GetComponent<AudioSource>();
         rb = transform.GetComponent<Rigidbody>();
         StartCoroutine(ItemScan());
     }
@@ -95,6 +98,8 @@ public class MotorController : MonoBehaviour
         }
         else if (Input.GetButtonUp(flickInput))
         {
+            soundSource.clip = flickSound;
+            soundSource.Play();
             playerHand.FlickController.Flick(nearestItem);
             nearestItem = null;
         }
