@@ -16,7 +16,7 @@ public class ItemBase : MonoBehaviour, IPoolable
     #endregion
     
     #region Interface Implementations
-    public ObjectPool {get => objectPool; set => objectPool = value;}
+    public ObjectPool ObjectPool {get => objectPool; set => objectPool = value;}
     public void EnablePoolable() 
     {
     	
