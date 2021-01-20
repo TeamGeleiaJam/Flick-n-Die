@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-
-public enum EEffectType 
+public enum EEffectType
 {
-    "DamageModifier", 
-    "Slow", 
-    "Weaken"
+    DamageModifier,
+    Slow,
+    Weaken
 }
