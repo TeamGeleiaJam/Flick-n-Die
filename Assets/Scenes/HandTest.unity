@@ -771,6 +771,10 @@ MonoBehaviour:
     m_Bits: 64
   defaultPosition: {x: 0, y: 0, z: 0}
   canMove: 0
+  controlLayout:
+  - Horizontal
+  - Vertical
+  - Space
 --- !u!4 &1635074273
 Transform:
   m_ObjectHideFlags: 0
@@ -811,10 +815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d934ea4652f9315439b76683de4c31f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlLayout:
-  - Horizontal
-  - Vertical
-  - Fire1
 --- !u!114 &1635074276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHurt: 0
-  hurtData: {fileID: 0}
+  hurtData: {fileID: 11400000, guid: 2eacb58a31a90bf41b68676fbb3faf4d, type: 2}
 --- !u!114 &1635074277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFlickForce: 0
+  PlayerHand: {fileID: 1635074275}
   flickData: {fileID: 11400000, guid: b5dcf96a28864e74e947e222dea2a4be, type: 2}
 --- !u!54 &1635074278
 Rigidbody:

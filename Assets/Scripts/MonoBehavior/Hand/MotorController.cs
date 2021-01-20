@@ -27,67 +27,76 @@ public class MotorController : MonoBehaviour
     {
         canMove = true;
         rb = transform.GetComponent<Rigidbody>();
-        StartCoroutine(Turn());
+        StartCoroutine(ItemScan());
     }
 
     void Update()
     {
         Move(Input.GetAxis(controlLayout[0]), Input.GetAxis(controlLayout[1]));
         TriggerFlick(controlLayout[2]);
-
+        Turn();
     }
 
-    public void Move(float horAxis, float verAxis)
+    private void Move(float horAxis, float verAxis)
     {
         if (canMove)
         {
-            transform.Translate(horAxis * speedData.Speed * Time.deltaTime, 0, verAxis * speedData.Speed * Time.deltaTime);
+            rb.velocity = new Vector3(horAxis * speedData.Speed, 0, verAxis * speedData.Speed);
         }
+        else
+        {
 
+        }
     }
 
-    private IEnumerator Turn()
+    private void Turn()
     {
-        float nearestDistance = 1000f;
-        Collider[] objectsNear = Physics.OverlapSphere(transform.position, 4f, flickableItemLayer, QueryTriggerInteraction.Ignore);
-
-        if (objectsNear.Length >= 1)
+        if (NearestItem)
         {
-            
-            
-            for (int i = 0; i < objectsNear.Length; i++)
-            {
-                if((transform.position - objectsNear[i].transform.position).sqrMagnitude < nearestDistance)
-                {
-                    nearestDistance = (transform.position - objectsNear[i].transform.position).sqrMagnitude;
-                    nearestItem = objectsNear[i].gameObject;
-                }
-            }
-            
             transform.GetChild(0).transform.rotation = Quaternion.Lerp(transform.GetChild(0).transform.rotation, Quaternion.LookRotation(nearestItem.transform.position - transform.position, Vector3.up), 5f * Time.deltaTime);
         }
         else
         {
-            transform.GetChild(0).transform.rotation = Quaternion.Lerp(transform.GetChild(0).transform.rotation, Quaternion.LookRotation(defaultPosition, Vector3.up), 5f * Time.deltaTime);
+            if(canMove)
+            transform.GetChild(0).transform.rotation = Quaternion.Lerp(transform.GetChild(0).transform.rotation, Quaternion.LookRotation(rb.velocity.normalized, Vector3.up), 5f * Time.deltaTime);
         }
-        yield return new WaitForSeconds(0.2f);
+    }
+
+    private IEnumerator ItemScan()
+    {
+        while (true)
+        {
+        float nearestDistance = float.MaxValue;
+            Collider[] objectsNear = Physics.OverlapSphere(transform.position, 4f, flickableItemLayer, QueryTriggerInteraction.Ignore);
+            if (objectsNear.Length >= 1)
+            {
+                for (int i = 0; i < objectsNear.Length; i++)
+                {
+                    if ((transform.position - objectsNear[i].transform.position).sqrMagnitude < nearestDistance)
+                    {
+                        nearestDistance = (transform.position - objectsNear[i].transform.position).sqrMagnitude;
+                        nearestItem = objectsNear[i].gameObject;
+                    }
+                }
+            }
+            else
+            {
+                nearestItem = null;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     public void TriggerFlick(string flickInput)
     {
-        
-        if( nearestItem != null && (nearestItem.transform.position - transform.position).sqrMagnitude < 9f)
+        if (Input.GetButton(flickInput))
         {
-
-            if (Input.GetButton(flickInput))
-            {
-                playerHand.FlickController.ChargeFlick();
-            }
-            else if (Input.GetButtonUp(flickInput))
-            {
-                playerHand.FlickController.Flick(nearestItem);
-                nearestItem = null;
-            }
+            playerHand.FlickController.ChargeFlick();
+        }
+        else if (Input.GetButtonUp(flickInput))
+        {
+            playerHand.FlickController.Flick(nearestItem);
+            nearestItem = null;
         }
     }
 }

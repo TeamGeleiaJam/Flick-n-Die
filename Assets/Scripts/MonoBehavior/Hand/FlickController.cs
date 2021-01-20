@@ -10,7 +10,7 @@ public class FlickController : MonoBehaviour
 
     private PlayerHand playerHand;
 
-    public PlayerHand PlayerHand;
+    public PlayerHand PlayerHand { get => playerHand; set => playerHand = value; }
 
     [SerializeField]
     private FlickData flickData;
@@ -30,9 +30,19 @@ public class FlickController : MonoBehaviour
 
     public void Flick(GameObject item)
     {
+        if (!item)
+        {
+            playerHand.FlickController.CurrentFlickForce = 0f;
+            return;
+        }
         Vector3 flickDirection = (Vector3.Normalize(item.transform.position - transform.position)) * (10f * playerHand.FlickController.CurrentFlickForce);
+        Rigidbody itemRb = item.GetComponent<Rigidbody>();
+        itemRb.isKinematic = false;
+        itemRb.AddForce(flickDirection, ForceMode.Impulse);
         item.GetComponent<Rigidbody>().AddForce(flickDirection, ForceMode.Impulse);
+
         playerHand.FlickController.CurrentFlickForce = 0f;
+
         item.GetComponent<ItemBase>().OnFlick();
     }
 }
