@@ -9,12 +9,14 @@ public class ItemBase : MonoBehaviour, IPoolable
     [SerializeField] private EffectController effectController;
     [SerializeField] private ItemData itemData;
     [SerializeField] private float lifetime;
+    private ObjectPool objectPool;
     
     public EffectController EffectController {get => effectController;}
     public ItemData ItemData {get => itemData;}
     #endregion
     
     #region Interface Implementations
+    public ObjectPool ObjectPool {get => objectPool; set => objectPool = value;}
     public void EnablePoolable() 
     {
     	
@@ -45,14 +47,14 @@ public class ItemBase : MonoBehaviour, IPoolable
     {
     	yield return new WaitForSeconds(lifetime);
     	Pool();
-    	if (ObjectPoolManager.objectPools.ContainsKey(itemType)) 
+    	if (ObjectPoolManager.Instance.ObjectPools.ContainsKey(itemType)) 
     	{
             ObjectPool newItemPool = new ObjectPool();
-            ObjectPoolManager.CreatePool(itemType, newItemPool);
+            ObjectPoolManager.Instance.CreatePool(itemType, newItemPool);
     	}
     	else 
     	{
-    		ObjectPoolManager.objectPools[itemType].ReturnObjectToPool(this.gameObject);
+    		ObjectPoolManager.Instance.ObjectPools[itemType].ReturnObjectToPool(this.gameObject);
     	}
     }
     #endregion

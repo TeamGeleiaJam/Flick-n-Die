@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4430432035304492020}
   - component: {fileID: 780202332336604241}
   - component: {fileID: 3258110972686643355}
-  - component: {fileID: 7217594985945471039}
+  - component: {fileID: 3633111251586176587}
   m_Layer: 0
   m_Name: Prego
   m_TagString: Untagged
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7217594985945471039
-BoxCollider:
+--- !u!136 &3633111251586176587
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,6 +92,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1494081, y: 0.76903266, z: 0.1494081}
+  m_Radius: 0.054030925
+  m_Height: 0.7690326
+  m_Direction: 1
   m_Center: {x: -0.0000009648502, y: 0.3847122, z: 0.000000063329935}
