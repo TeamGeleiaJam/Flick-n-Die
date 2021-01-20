@@ -26,8 +26,9 @@ public class ItemBase : MonoBehaviour, IPoolable
     	
     }
     #endregion
-    
+
     #region Custom Methods
+
     public void OnFlick() 
     {
         if (itemData.FlickEffects.Count > 0) 
@@ -37,7 +38,10 @@ public class ItemBase : MonoBehaviour, IPoolable
                 // do stuff with each effect data
             }
         }
+        
+        StartCoroutine(FlickedRoutine());
     }
+    
     public void OnActivate() 
     {
         if (itemData.PeriodicEffects.Count > 0) 
@@ -48,6 +52,7 @@ public class ItemBase : MonoBehaviour, IPoolable
             }
         }
     }
+    
     public void OnHitTarget(HurtController hurtController, StatusEffectController statusEffectController) 
     {
         if (itemData.ImpactEffects.Count > 0) 
@@ -58,9 +63,21 @@ public class ItemBase : MonoBehaviour, IPoolable
             }
         }
     }
+    
     #endregion
     
     #region Coroutines
+    private IEnumerator FlickedRoutine()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        do
+        {
+            yield return new WaitForSeconds(0.3f);
+        } while (rb.velocity.magnitude < 0.5f);
+        Destroy(gameObject);
+    }
+
     private IEnumerator LifetimeRoutine() 
     {
     	yield return new WaitForSeconds(lifetime);
