@@ -25,5 +25,6 @@ public class EffectData : ScriptableObject
     public float AreaOfEffect { get => areaOfEffect; }
     public float Delay { get => delay; }
     public float Intensity { get => intensity; }
+    public EEffectType StatusEffectType { get => statusEffectType; }
     #endregion
 }

@@ -9,7 +9,9 @@ public class HurtData : ScriptableObject
     [Header("Hurt Parameters")]
     [Tooltip("The minimum hurt value for any hand at any given point.")]
     [SerializeField] private float minHurt;
-    
+    [SerializeField] private float hurt;
+
     public float MinHurt {get => minHurt;}
+    public float Hurt { get => hurt; set => hurt = value; }
     #endregion
 }
