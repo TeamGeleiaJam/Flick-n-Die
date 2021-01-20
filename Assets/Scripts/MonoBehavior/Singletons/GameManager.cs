@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonBase<GameManager>
 {
     #region Field Declarations
 
@@ -16,10 +16,11 @@ public class GameManager : MonoBehaviour
     // Game data
     [Header("Game Values")]
     [Tooltip("The spawnpool of items for the game.")]
-    [SerializeField] private SpawnpoolData spawnpool;
+    [SerializeField] private GameplayData gameplayData;
+    [SerializeField] private float itemSpawnInterval;
 
     // Public accessors
-    public SpawnpoolData Spawnpool { get => spawnpool; }
+    public GameplayData GameplayData { get => gameplayData; }
 
     #endregion
 
@@ -33,8 +34,6 @@ public class GameManager : MonoBehaviour
 
         // Enters the menu state immediately
         SwitchState(menuState);
-
-        EventBroker.GameOver += LoadScene;
     }
 
     // Update is called once per frame
@@ -42,11 +41,6 @@ public class GameManager : MonoBehaviour
     {
         // Runs the current state's update function
         currentState.Update(this);
-    }
-
-    private void OnDestroy()
-    {
-        EventBroker.GameOver -= LoadScene;
     }
 
     #endregion
