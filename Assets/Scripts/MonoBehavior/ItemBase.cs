@@ -42,11 +42,22 @@ public class ItemBase : MonoBehaviour, IPoolable
     }
     public void OnFlick()
     {
-
+        StartCoroutine(FlickedRoutine());
     }
     #endregion
     
     #region Coroutines
+    private IEnumerator FlickedRoutine()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        do
+        {
+            yield return new WaitForSeconds(0.3f);
+        } while (rb.velocity.magnitude < 0.5f);
+        Destroy(gameObject);
+    }
+
     private IEnumerator LifetimeRoutine() 
     {
     	yield return new WaitForSeconds(lifetime);
