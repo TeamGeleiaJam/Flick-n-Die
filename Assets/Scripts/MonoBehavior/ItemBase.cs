@@ -28,21 +28,35 @@ public class ItemBase : MonoBehaviour, IPoolable
     #endregion
     
     #region Custom Methods
-    public void OnHit() 
+    public void OnFlick() 
     {
-    	
+        if (itemData.FlickEffects.Count > 0) 
+        {
+            for (int i = 0; i < itemData.FlickEffects.Count; i++) 
+            {
+                // do stuff with each effect data
+            }
+        }
     }
     public void OnActivate() 
     {
-    	
+        if (itemData.PeriodicEffects.Count > 0) 
+        {
+            for (int i = 0; i < itemData.PeriodicEffects.Count; i++) 
+            {
+                // do stuff with each effect data
+            }
+        }
     }
     public void OnHitTarget(HurtController hurtController, StatusEffectController statusEffectController) 
     {
-    	
-    }
-    public void OnFlick()
-    {
-
+        if (itemData.ImpactEffects.Count > 0) 
+        {
+            for (int i = 0; i < itemData.ImpactEffects.Count; i++) 
+            {
+                // do stuff with each effect data
+            }
+        }
     }
     #endregion
     
