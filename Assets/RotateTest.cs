@@ -5,15 +5,9 @@ using UnityEngine;
 public class RotateTest : MonoBehaviour
 {
     public int speed = 5;
-    
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Rotate(0, 0, speed);
+        transform.Rotate(speed, 0, 0);
     }
 }

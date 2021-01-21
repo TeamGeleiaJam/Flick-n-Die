@@ -53,7 +53,6 @@ public class ItemBase : MonoBehaviour, IPoolable
     private IEnumerator FlickedRoutine()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.isKinematic = false;
         do
         {
             yield return new WaitForSeconds(0.3f);

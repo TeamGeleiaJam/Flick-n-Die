@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a054ee6fb6e0794d8c581bed867f701, type: 3}
   m_Name: Speed Data Test
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 10
