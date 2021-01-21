@@ -43,10 +43,17 @@ public class ItemBase : MonoBehaviour, IPoolable
 
     }
     
-    // public void OnHitTarget(HurtController hurtController, StatusEffectController statusEffectController) 
-    // {
-    	
-    // }
+    public void OnHitTarget(HurtController hurtController, StatusEffectController statusEffectController) 
+    {
+        if (itemData.HitEffects.Count > 0) 
+        {
+            for (int i = 0; i < itemData.HitEffects.Count; i++) 
+            {
+                // do stuff with each effect data
+            }
+        }
+    }
+    
     #endregion
     
     #region Coroutines
