@@ -60,3 +60,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Packages/packages-lock.json
+
+Assets/Plugins/ConsolePro.meta
+
+Assets/Plugins/ConsolePro/
