@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-
-public enum EEffectType 
+public enum EEffectType
 {
     None,
     DamageModifier, 

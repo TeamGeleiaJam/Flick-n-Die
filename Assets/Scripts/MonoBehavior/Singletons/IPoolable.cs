@@ -4,8 +4,10 @@ using UnityEngine;
 
 public interface IPoolable 
 {
-    #region Field Declarations
-    public ObjectPool ObjectPool { get; set; }
+	#region Field Declarations
+	private ObjectPool objectPool;
+	
+	public ObjectPool ObjectPool {get => objectPool; set => objectPool = value;}
 	#endregion
 	
     #region Custom Methods
