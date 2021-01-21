@@ -9,21 +9,27 @@ public class ItemBase : MonoBehaviour, IPoolable
     [SerializeField] private EffectController effectController;
     [SerializeField] private ItemData itemData;
     [SerializeField] private float lifetime;
+
+    private float lifeTimer;
     private ObjectPool objectPool;
-    
+
     public EffectController EffectController {get => effectController;}
     public ItemData ItemData {get => itemData;}
+    public ObjectPool ObjectPool { get => objectPool; set => objectPool = value; }
+    public EItemType ItemType { get => itemType; set => itemType = value; }
     #endregion
-    
+
     #region Interface Implementations
     public ObjectPool ObjectPool {get => objectPool; set => objectPool = value;}
     public void EnablePoolable() 
     {
-    	
+
     }
+    
     public void Pool()
     {
-    	
+        // Notifies the object has despawned
+        EventBroker.CallObjectDespawned();
     }
     #endregion
 
@@ -80,8 +86,10 @@ public class ItemBase : MonoBehaviour, IPoolable
 
     private IEnumerator LifetimeRoutine() 
     {
-    	yield return new WaitForSeconds(lifetime);
-    	Pool();
+        yield return new WaitForSeconds(lifetime);
+
+        Pool();
+        
     	if (ObjectPoolManager.Instance.ObjectPools.ContainsKey(itemType)) 
     	{
             ObjectPool newItemPool = new ObjectPool();

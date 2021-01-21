@@ -13,5 +13,5 @@ public enum EItemType
     Marble, 
     IceCube, 
     Soap, 
-    Thimble,
+    Thimble
 }
