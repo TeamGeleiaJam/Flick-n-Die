@@ -20,7 +20,6 @@ public class ItemBase : MonoBehaviour, IPoolable
     #endregion
 
     #region Interface Implementations
-    public ObjectPool ObjectPool {get => objectPool; set => objectPool = value;}
     public void EnablePoolable() 
     {
 
@@ -61,9 +60,9 @@ public class ItemBase : MonoBehaviour, IPoolable
     
     public void OnHitTarget(HurtController hurtController, StatusEffectController statusEffectController) 
     {
-        if (itemData.ImpactEffects.Count > 0) 
+        if (itemData.HitEffects.Count > 0) 
         {
-            for (int i = 0; i < itemData.ImpactEffects.Count; i++) 
+            for (int i = 0; i < itemData.HitEffects.Count; i++) 
             {
                 // do stuff with each effect data
             }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HurtController : MonoBehaviour
 {
-
     private AudioSource soundSource;
     [SerializeField] private AudioClip hurtSound;
     [SerializeField]
