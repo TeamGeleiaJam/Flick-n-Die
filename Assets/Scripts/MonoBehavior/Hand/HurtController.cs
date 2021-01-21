@@ -5,6 +5,8 @@ using UnityEngine;
 public class HurtController : MonoBehaviour
 {
 
+    private AudioSource soundSource;
+    [SerializeField] private AudioClip hurtSound;
     [SerializeField]
     private float currentHurt = 0;
     public float CurrentHurt { get => currentHurt; set => currentHurt = value; }
@@ -17,12 +19,15 @@ public class HurtController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundSource = GetComponent<AudioSource>();
         rb = transform.GetComponent<Rigidbody>();
     }
 
     
     public void OnHurt(float damage, Transform hitterPosition)
     {
+        soundSource.clip = hurtSound;
+        soundSource.Play();
         Vector3 flyDirection = Vector3.Normalize(transform.position - hitterPosition.position) * ((currentHurt / 10) + 20);
         rb.AddForce(flyDirection, ForceMode.Impulse);
         
