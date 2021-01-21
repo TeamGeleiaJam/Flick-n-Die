@@ -5,9 +5,7 @@ using UnityEngine;
 public interface IPoolable 
 {
 	#region Field Declarations
-	private ObjectPool objectPool;
-	
-	public ObjectPool ObjectPool {get => objectPool; set => objectPool = value;}
+	public ObjectPool ObjectPool { get; set; }
 	#endregion
 	
     #region Custom Methods
