@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Flick Data Test
   m_EditorClassIdentifier: 
   maxFlickForce: 5
-  forceIncreaseSpeed: 1
+  forceIncreaseSpeed: 3
