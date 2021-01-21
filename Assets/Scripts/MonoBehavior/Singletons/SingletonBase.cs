@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 // A singleton class of a given type T, which inherits from singletonbase of that same type T
-public class SingletonBase<T> : MonoBehaviour where T : SingletonBase<T>
+public class SingletonBase<T> : SerializedMonoBehaviour where T : SingletonBase<T>
 {
     // The global instance reference of the singleton
     private static T instance;

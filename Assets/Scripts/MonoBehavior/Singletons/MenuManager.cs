@@ -17,7 +17,7 @@ public class MenuManager : SingletonBase<MenuManager>
     #region Custom Methods
 
     // Switches the current active window to the desired active window
-    public void SwitchToWindow(string desiredWindow, bool mouseEnabled = true)
+    public void SwitchToWindow(string desiredWindow)
     {
         // Sets the given menu active
         windows[desiredWindow].SetActive(true);
@@ -33,63 +33,63 @@ public class MenuManager : SingletonBase<MenuManager>
             }
         }
 
-        // Disables mouse if mouseEnabled is false
-        if (mouseEnabled == false)
-        {
-            // Locks the cursor and makes it invisible;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            // Unlocks the cursor and makes it visible;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        // // Disables mouse if mouseEnabled is false
+        // if (mouseEnabled == false)
+        // {
+        //     // Locks the cursor and makes it invisible;
+        //     Cursor.lockState = CursorLockMode.Locked;
+        //     Cursor.visible = false;
+        // }
+        // else
+        // {
+        //     // Unlocks the cursor and makes it visible;
+        //     Cursor.lockState = CursorLockMode.None;
+        //     Cursor.visible = true;
+        // }
 
         PlayClickSound();
     }
 
     // Overlays a window on top of the currently active window
-    public void OverlayWindow(string desiredWindow, bool mouseEnabled = true)
+    public void OverlayWindow(string desiredWindow)
     {
         // Sets the given menu active
         windows[desiredWindow].SetActive(true);
 
-        // Disables mouse if mouseEnabled is false
-        if (mouseEnabled == false)
-        {
-            // Locks the cursor and makes it invisible;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            // Unlocks the cursor and makes it visible;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        // // Disables mouse if mouseEnabled is false
+        // if (mouseEnabled == false)
+        // {
+        //     // Locks the cursor and makes it invisible;
+        //     Cursor.lockState = CursorLockMode.Locked;
+        //     Cursor.visible = false;
+        // }
+        // else
+        // {
+        //     // Unlocks the cursor and makes it visible;
+        //     Cursor.lockState = CursorLockMode.None;
+        //     Cursor.visible = true;
+        // }
     }
 
     // Disables a particular window
-    private void DisableWindow(string desiredWindow, bool mouseEnabled = true)
+    public void DisableWindow(string desiredWindow)
     {
         // Sets the given menu active
         windows[desiredWindow].SetActive(false);
 
-        // Disables mouse if mouseEnabled is false
-        if (mouseEnabled == false)
-        {
-            // Locks the cursor and makes it invisible;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            // Unlocks the cursor and makes it visible;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        // // Disables mouse if mouseEnabled is false
+        // if (mouseEnabled == false)
+        // {
+        //     // Locks the cursor and makes it invisible;
+        //     Cursor.lockState = CursorLockMode.Locked;
+        //     Cursor.visible = false;
+        // }
+        // else
+        // {
+        //     // Unlocks the cursor and makes it visible;
+        //     Cursor.lockState = CursorLockMode.None;
+        //     Cursor.visible = true;
+        // }
     }
 
     // Plays a button click sound
